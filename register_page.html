@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register_Page</title>
+    <style>
+        #div{
+            border: 3px solid;
+            border-radius: 20px;
+            height: 350px;
+            width: 350px;
+            /* margin: auto; */
+            position: absolute;
+            top: 130px;
+            left: 500px;
+            background-color: #ffffffc5;
+        }
+        #register{
+           margin-left: 30%;
+           cursor: pointer;
+           background-color: rgb(98, 175, 220);
+           height: 40px;
+           width: 100px;
+           border-radius: 20px;
+        }
+        #register:hover{
+            background-color:rgb(0, 115, 255);
+            transform: scale(1.0);
+        }
+        #reg{
+            text-align: center;
+        }
+        #already{
+            height: 20px;
+            width: 60px;
+            border-radius: 20px;
+            border: none;
+            background-color: transparent;
+        }
+        body{
+            background-image: url("./images/registerbackground.png");
+            background-repeat: no-repeat;
+            /* background-position: center; */
+            background-size: cover;   
+
+        }
+    
+    </style>
+</head>
+<body>
+    <!-- <h2>Welcome to Register Page</h2> -->
+    <form action="">
+        <div id="div">
+            <h1 id="reg">Register</h1> 
+            &nbsp; Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" id="papa" placeholder="enter name"> <br>
+            <p id="para3"></p>
+           &nbsp; Email: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <input type="text" id="email" name="username" placeholder="enter email">
+            <p id="para1"></p>
+            &nbsp; Password: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" id="password" name="password" placeholder="enter password"> <br>
+            <p id="para2"></p> 
+            &nbsp; Confirm Password : <input type="password" id="password1" placeholder="Re-enter password ">
+            <p id="para2"></p> 
+            <button id="register">Register</button> <br> <br>
+           &nbsp; &nbsp; &nbsp; &nbsp; Already have a account ?<button id="already"><a href="./login_page.html">Login</a></button>
+        </div>
+    </form>
+    <script>
+        let register=document.getElementById("register")
+        let email=document.getElementById("email")
+        let password=document.getElementById("password")
+
+        register.addEventListener("click",(e)=>{
+            e.preventDefault()
+            console.log(email.value);
+            console.log(password.value);
+            if(email.value!="" && password.value!=""){
+                localStorage.setItem("email", email.value)
+                localStorage.setItem("password",password.value)
+                alert("registerd successfully")
+                window.open("./login_page.html")
+            }
+            if(email.value==""){
+                e.preventDefault()
+                email.style.borderColor="red"
+                document.getElementById("para1").innerText = "This email is required"
+                document.getElementById("para1").style.color= "red";
+            }
+            else if(password.value== ""){
+                e.preventDefault()
+                email.style.borderColor="red"
+                document.getElementById("para2").innerText = "This password is required"
+                document.getElementById("para2").style.color= "red"
+            }
+            else if(papa.value==""){
+                e.preventDefault()
+                papa.style.borderColor="red"
+                document.getElementById("para3").innerText = "This name is required"
+                document.getElementById("para3").style.color= "red"
+            }
+            else if(localStorage.getItem("password")!=password1.value){
+                event.preventDefault();
+                password1.style.borderColor="red";
+                alert("enter the  Confirm password")
+            } 
+        })
+    </script>
+</body>
+</html>
